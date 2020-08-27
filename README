@@ -1,0 +1,37 @@
+----------------------------------
+Assemble Disassemble Engine x86-32
+----------------------------------
+
+Support general instructions up to P6(686), 16/32 bit modes, Intel syntax.
+Compilable via FASM,TASM,MASM,NASM.
+No external dependencies.
+Position independent code.
+Raw code size 11 279 bytes.
+
+Test application ade86.exe
+When running without arguments starts interactive loop.
+
+	usage: ade86.exe [BINARY-OUTPUT] [SOURCE-INPUT]
+	usage: ade86.exe -U BINARY-INPUT
+
+	#ade86 out.bin
+	;; Running interactive assembler.
+	;; Press ENTER on empty line to stop.
+	00000000: xor eax,eax
+	          31C0
+	00000002: push eax
+	          50
+	00000003: ret
+	          C3
+	00000004:
+	Output: 4 bytes
+
+	#ade86.exe -u out.bin
+	;; Running interactive disassembler.
+	;; Press ENTER to unassemble
+	00000000>
+	00000000: 31C0                            XOR       EAX,EAX
+	00000002: 50                              PUSH      EAX
+	00000003: C3                              RET
+	00000004> quit
+
